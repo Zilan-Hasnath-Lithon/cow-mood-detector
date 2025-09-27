@@ -50,7 +50,7 @@ const Main = () => {
     return (
         <main className="h-[calc(100vh-64px)] flex flex-col justify-center items-center bg-white p-6 font-sans">
             <p className="text-gray-600 text-center text-lg mb-6">
-                Upload a photo and detect the mood!
+                Upload Cow's Photo!
             </p>
 
             <label className="flex justify-center mb-6">
