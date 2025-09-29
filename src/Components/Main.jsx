@@ -46,51 +46,55 @@ const Main = () => {
   };
 
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-gray-50 via-white to-gray-100 font-sans">
+    <main className="min-h-screen flex flex-col items-center bg-gradient-to-br from-indigo-100 via-white to-blue-50 font-sans overflow-x-hidden">
       {/* Header */}
-      <header className="py-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">
+      <header className="py-12 text-center z-10 relative">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight drop-shadow-md">
           🐮 Cow Mood Detector
         </h1>
-        <p className="mt-3 text-gray-500 text-lg">
-          Upload a photo & instantly reveal your cow’s vibe ✨
+        <p className="mt-4 text-gray-600 text-lg md:text-xl">
+          Upload a photo & reveal your cow’s mood ✨
         </p>
       </header>
 
-      {/* Main Content */}
-      <div className="flex flex-col items-center justify-center flex-grow px-6">
+      {/* Floating Cards Container */}
+      <div className="flex flex-col items-center justify-center flex-grow px-6 relative z-10">
         {/* Upload Button */}
-        <label className="mb-6">
+        <label className="mb-8">
           <input
             type="file"
             accept="image/*"
             onChange={handlePhotoUpload}
             className="hidden"
           />
-          <span className="cursor-pointer inline-flex items-center justify-center bg-gradient-to-r from-indigo-500 to-blue-600 text-white px-8 py-3 rounded-xl font-medium text-lg shadow-lg hover:opacity-90 transition-all duration-200 active:scale-95">
+          <span className="cursor-pointer inline-flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-10 py-4 rounded-3xl font-semibold text-lg shadow-2xl hover:opacity-90 hover:shadow-3xl transition-all duration-300 active:scale-95">
             📷 Upload Photo
           </span>
         </label>
 
-        {/* Preview Image */}
+        {/* Preview Image Card */}
         {preview && (
-          <div className="mb-8 transform transition-all duration-500 hover:scale-105">
-            <img
-              src={preview}
-              alt="Cow Preview"
-              className="w-72 h-72 object-cover rounded-2xl shadow-2xl border border-gray-200"
-            />
+          <div className="mb-10 w-full max-w-sm transform transition-all duration-700 hover:scale-105 hover:-translate-y-2">
+            <div className="bg-white/50 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 p-4 flex justify-center">
+              <img
+                src={preview}
+                alt="Cow Preview"
+                className="w-64 h-64 object-cover rounded-2xl"
+              />
+            </div>
           </div>
         )}
 
-        {/* Mood & Suggestion */}
+        {/* Mood & Suggestion Floating Card */}
         {mood && (
-          <div className="backdrop-blur-lg bg-white/70 rounded-2xl p-6 shadow-xl border border-gray-200 w-80 text-center transition-all duration-500">
-            <p className="text-xl font-semibold text-gray-800 mb-2">
+          <div className="w-full max-w-sm backdrop-blur-xl bg-white/40 rounded-3xl shadow-2xl border border-white/20 p-6 text-center transform transition-all duration-700 hover:scale-[1.03] hover:-translate-y-1">
+            <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               Mood:{" "}
-              <span className="text-indigo-600 font-bold">{mood}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">
+                {mood}
+              </span>
             </p>
-            <p className="text-gray-600 italic whitespace-pre-line leading-relaxed">
+            <p className="text-gray-700 italic whitespace-pre-line leading-relaxed md:text-lg">
               {suggestion}
             </p>
           </div>
@@ -98,14 +102,14 @@ const Main = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-6 text-center">
-        <h2 className="text-base font-semibold mb-3 text-white">📩 Connect</h2>
-        <div className="flex justify-center space-x-6">
+      <footer className="bg-gray-900 text-gray-400 py-6 text-center mt-16 w-full z-10 relative">
+        <h2 className="text-sm font-semibold mb-2 text-white">📩 Connect with Me</h2>
+        <div className="flex justify-center space-x-8">
           <a
             href="https://github.com/Zilan-Hasnath-Lithon"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-200"
+            className="hover:text-white transition-colors duration-300"
           >
             GitHub
           </a>
@@ -113,12 +117,17 @@ const Main = () => {
             href="https://x.com/ZilanHasnath"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-200"
+            className="hover:text-white transition-colors duration-300"
           >
             Twitter
           </a>
         </div>
       </footer>
+
+      {/* Floating Background Shapes */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-pink-300 rounded-full opacity-30 blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 rounded-full opacity-20 blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute top-1/3 left-1/4 w-48 h-48 bg-purple-300 rounded-full opacity-25 blur-2xl -z-10 animate-pulse"></div>
     </main>
   );
 };
