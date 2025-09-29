@@ -2,25 +2,11 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-wrap justify-between items-center h-16 px-6 bg-blue-600 shadow-md">
-      <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
-        COW Mood Detector
-      </h1>
-      <div className="flex space-x-4 mt-2 sm:mt-0">
-        {[
-          { name: "GitHub", url: "https://github.com/Zilan-Hasnath-Lithon" },
-          { name: "Twitter", url: "https://x.com/ZilanHasnath" },
-        ].map((link) => (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white font-medium hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 transition-colors duration-200"
-          >
-            {link.name}
-          </a>
-        ))}
+    <nav className="w-full bg-gradient-to-r from-blue-600 to-blue-500 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide drop-shadow">
+          COW Mood Detector
+        </h1>
       </div>
     </nav>
   );
